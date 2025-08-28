@@ -1,6 +1,7 @@
 // import { Button } from "@/components/ui/button"
-// import { canAccessAdminPages } from "@/permissions/general"
-// import { getCurrentUser } from "@/services/clerk"
+import { canAccessAdminPages } from "@/permissions/general"
+import { getCurrentUser } from "@/services/clerk"
+import ButtonN from "@/components/ButtonN"
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs"
 import Link from "next/link"
 import { ReactNode, Suspense } from "react"
@@ -28,7 +29,7 @@ function Navbar() {
         </Link>
         <Suspense>
           {/* <SignedIn> */}
-            {/* <AdminLink /> */}
+            <AdminLink />
             <Link
               className="hover:bg-accent/10 flex items-center px-2"
               href="/courses"
@@ -52,25 +53,31 @@ function Navbar() {
             </div>
           {/* </SignedIn> */}
         </Suspense>
-        {/* <Suspense>
-          <SignedOut>
-            <Button className="self-center" asChild>
+        <Suspense>
+          {/* <SignedOut> */}
+              <ButtonN className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                {/* <Link href="/sign-in">
+                  Sign In
+                </Link> */}
+                <SignInButton>Sign In</SignInButton>
+              </ButtonN>
+            {/* <Button className="self-center" asChild>
               <SignInButton>Sign In</SignInButton>
-            </Button>
-          </SignedOut>
-        </Suspense> */}
+            </Button> */}
+          {/* </SignedOut> */}
+        </Suspense>
       </nav>
     </header>
   )
 }
 
-// async function AdminLink() {
-//   const user = await getCurrentUser()
-//   if (!canAccessAdminPages(user)) return null
+async function AdminLink() {
+  const user = await getCurrentUser()
+  if (!canAccessAdminPages(user)) return null
 
-//   return (
-//     <Link className="hover:bg-accent/10 flex items-center px-2" href="/admin">
-//       Admin
-//     </Link>
-//   )
-// }
+  return (
+    <Link className="hover:bg-accent/10 flex items-center px-2" href="/admin">
+      Admin
+    </Link>
+  )
+}
