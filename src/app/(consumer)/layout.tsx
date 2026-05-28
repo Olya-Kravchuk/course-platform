@@ -2,7 +2,7 @@
 import { canAccessAdminPages } from "@/permissions/general"
 import { getCurrentUser } from "@/services/clerk"
 import ButtonN from "@/components/ButtonN"
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs"
+// import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs"
 import Link from "next/link"
 import { ReactNode, Suspense } from "react"
 
@@ -43,13 +43,13 @@ function Navbar() {
               Purchase History
             </Link>
             <div className="size-8 self-center">
-              <UserButton
+              {/* <UserButton
                 appearance={{
                   elements: {
                     userButtonAvatarBox: { width: "100%", height: "100%" },
                   },
                 }}
-              />
+              /> */}
             </div>
           {/* </SignedIn> */}
         </Suspense>
@@ -59,7 +59,7 @@ function Navbar() {
                 {/* <Link href="/sign-in">
                   Sign In
                 </Link> */}
-                <SignInButton>Sign In</SignInButton>
+                {/* <SignInButton>Sign In</SignInButton> */}
               </ButtonN>
             {/* <Button className="self-center" asChild>
               <SignInButton>Sign In</SignInButton>
@@ -80,4 +80,9 @@ async function AdminLink() {
       Admin
     </Link>
   )
+  // return (
+  //   <Link className="hover:bg-accent/10 flex items-center px-2" href="/admin">
+  //     Admin
+  //   </Link>
+  // )
 }

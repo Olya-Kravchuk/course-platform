@@ -29,6 +29,7 @@ export const PurchaseTable = pgTable("purchases", {
   updatedAt,
 })
 
+
 export const PurchaseRelationships = relations(PurchaseTable, ({ one }) => ({
   user: one(UserTable, {
     fields: [PurchaseTable.userId],

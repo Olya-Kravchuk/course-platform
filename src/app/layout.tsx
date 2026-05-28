@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
+// import { ClerkProvider } from "@clerk/nextjs";
+import { Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { Toaster } from "sonner";
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,14 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
+    // <ClerkProvider>
+      <html lang="en" className={cn("font-sans", inter.variable)}>
         <body
           className="antialiased"
         >
           {children}
+          <Toaster richColors />
         </body>
       </html>
-    </ClerkProvider>
+    // </ClerkProvider>
   );
 }
